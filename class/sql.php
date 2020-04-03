@@ -6,7 +6,7 @@ class Sql extends PDO {
 
     //metodo construtor para realizar a conexão com o banco de dados
     public function __construct(){
-        $this->conn = new PDO("mysql:host=localhost;dbname=dbphp7","root","");
+        $this->conn = new PDO("mysql:host=127.0.0.1;dbname=dbphp7","root","@123Deloam");
     }//__construct
 
     //metodo para setar parametros para a query do sql
@@ -16,12 +16,12 @@ class Sql extends PDO {
         }
     }//setParams
 
-    //metodo para setar um parametro no bindparam da query
+    //metodo para setar um parametro apenas no bindparam da query
     private function setParam($statement, $key, $value){
         $statement->bindParam($key, $value);
     }//setParam
 
-    //metodo para passar a query bruta e seus paramentros atraves de um array
+    //metodo para passar a query bruta e seus paramentros atraves de um array 
     public function query($rawQuery, $params = array()){
         $stmt = $this->conn->prepare($rawQuery);
 
